@@ -1,4 +1,6 @@
 class BooksController < ApplicationController
+	before_action :authenticate_user!, only: [:new, :create]
+	before_action :check_role, only: [:new, :create]
 	before_action :read_books, only: [:index]
 	before_action :set_book, only: [:show]
 
@@ -39,5 +41,13 @@ class BooksController < ApplicationController
 	end
 	def book_params
 		params.require(:book).permit(:title, :author, genres: [], author_attributes: [:first_name, :last_name])
+	end
+	def check_role
+		if Book.new.can_edit? current_user
+			return
+		else
+			flash[:alert] = "You are not authorised!"
+			redirect_to root_path
+		end
 	end
 end

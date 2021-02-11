@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-	get "/", to: "books#index"
+  	devise_for :users
+	root to: "books#index"
 	get "/books", to: "books#index"
 	get "/books/new", to: "books#new", as: "new_book"
 	get "/books/:id", to: "books#show", as: "book"
