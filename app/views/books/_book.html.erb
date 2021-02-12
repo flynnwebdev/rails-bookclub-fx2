@@ -1,5 +1,8 @@
 <section class="card">
-	<h1><%=book.title%></h1>	
+	<h1><%=book.title%></h1>
+	<% if book.cover.attached? %>
+		<%= image_tag book.cover, class: 'image' %>
+	<% end %>	
 	<p>Author: <%= link_to book.author.name, author_path(book.author.id) %>
 	<p>Genres: <%= book.list_genres %>
 </section>

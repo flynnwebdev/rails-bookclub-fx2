@@ -6,6 +6,10 @@
 		<%=form.text_field :title, required:true %>
 	</div>
 	<div class="p-2">
+		<%=form.label :cover %>
+		<%=form.file_field :cover %>
+	</div>
+	<div class="p-2">
 		<%=form.label :genres %>
 		<!-- 
 			collection_select:

@@ -21,6 +21,7 @@ class BooksController < ApplicationController
 		end
 
 		book = Book.create(title: book_params[:title], genre_ids: book_params[:genres], author: @author)
+		book.cover.attach(book_params[:cover])
 
 		redirect_to book_path(book.id)
 	end
@@ -40,7 +41,7 @@ class BooksController < ApplicationController
 		end
 	end
 	def book_params
-		params.require(:book).permit(:title, :author, genres: [], author_attributes: [:first_name, :last_name])
+		params.require(:book).permit(:title, :cover, :author, genres: [], author_attributes: [:first_name, :last_name])
 	end
 	def check_role
 		if Book.new.can_edit? current_user

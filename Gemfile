@@ -51,3 +51,8 @@ gem "bulma-rails", "~> 0.9.1"
 gem "devise", "~> 4.7"
 
 gem "rolify", "~> 5.3"
+
+gem "cloudinary", "~> 1.18"
+gem "activestorage-cloudinary-service", "~> 0.2.3"
+
+gem "dotenv-rails", "~> 2.7"
