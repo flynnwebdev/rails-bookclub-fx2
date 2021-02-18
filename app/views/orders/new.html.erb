@@ -1,0 +1,18 @@
+<h1>Your Order</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><%= @book.title %></td>
+            <td><%= @book.author.name %></td>
+            <td><%= number_to_currency @book.price %></td>
+        </tr>
+    </tbody>
+</table>
+<button id="pay-now">Checkout</button>

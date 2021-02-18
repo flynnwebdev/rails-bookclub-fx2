@@ -6,6 +6,10 @@
 		<%=form.text_field :title, required:true %>
 	</div>
 	<div class="p-2">
+		<%=form.label :price %>
+		<%=form.number_field :price, step: 0.05, in: 1..1000 %>
+	</div>
+	<div class="p-2">
 		<%=form.label :cover %>
 		<%=form.file_field :cover %>
 	</div>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  	get 'orders/new/:book_id', to: "orders#new", as: "new_order"
   	devise_for :users
 	root to: "books#index"
 	get "/books", to: "books#index"
