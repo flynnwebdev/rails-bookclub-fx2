@@ -1,0 +1,40 @@
+<%= form_with model: @book, local: true do |form|%>
+    <div class="p-2">
+        <%=form.label :title %>
+            <%=form.text_field :title, required:true %>
+    </div>
+    <div class="p-2">
+        <%=form.label :price %>
+            <%=form.number_field :price, step: 0.05, in: 1..1000 %>
+    </div>
+    <div class="p-2">
+        <%=form.label :cover %>
+            <%=form.file_field :cover %>
+    </div>
+    <div class="p-2">
+        <%=form.label :genres %>
+            <!-- 
+			collection_select:
+				param 1: Field in this model (book) where we want to store the selected ID
+				param 2: The collection of model objects to populate the select
+				param 3: The id field within the collection model
+				param 4: The label field within the collection model
+		 -->
+            <%=form.collection_check_boxes :genres, Genre.order(:name), :id, :name, { checked: @book.genre_ids.map(&:to_param) } %>
+    </div>
+    <h2>Author:</h2>
+    <div class="p-2">
+        <%=form.collection_select :author, Author.order(:last_name), :id, :name %>
+    </div>
+    <%= form.fields_for :author do |author_form| %>
+        <div class="p-2">
+            <%=author_form.label :first_name %>
+                <%=author_form.text_field :first_name %>
+        </div>
+        <div class="p-2">
+            <%=author_form.label :last_name %>
+                <%=author_form.text_field :last_name %>
+        </div>
+        <% end %>
+        <%=form.submit %>
+<%end%>

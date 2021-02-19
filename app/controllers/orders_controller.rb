@@ -21,10 +21,10 @@ class OrdersController < ApplicationController
   end
 
   def success
-    render html: "<h4>Thanks for your order!</h4>"
+    render html: "<h4>Thanks for your order!</h4>".html_safe
   end
 
   def cancel
-    render html: "<h4>The order was cancelled.</h4>"
+    render html: "<h4>The order was cancelled.</h4>".html_safe
   end
 end
