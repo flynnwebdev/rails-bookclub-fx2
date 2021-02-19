@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   	get 'orders/new/:book_id', to: "orders#new", as: "new_order"
+	get 'orders/success', to: "orders#success", as: "order_success"
+	get "orders/cancel", to: "orders#cancel", as: "order_cancel"
   	devise_for :users
 	root to: "books#index"
 	get "/books", to: "books#index"
